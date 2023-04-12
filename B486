@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    set<int>s;
+    set<int>s1;
+int n,a,m,test=1;
+ 
+cin>>n>>m;
+int B[n+1][m+1];
+bool test1;
+for(int i=0;i<n;i++)
+    for(int j=0;j<m;j++)
+        {cin>>B[i][j];
+          if(B[i][j]==0)
+              { s.insert(i);
+                s1.insert(j);}
+        }
+        if( (s.size()==n && s1.size()<m)||(s1.size()==m && s.size()<n))
+           test=0;
+    else
+    
+        {for (set<int>::iterator it=s.begin(); it!=s.end(); ++it)
+  
+      { for (set<int>::iterator it1=s1.begin(); it1!=s1.end(); ++it1)
+                 if(B[*it][*it1]==1)
+                     {test=0;
+                     break;}
+                    if(!test)
+                    break;
+      }}
+      if(!test )
+          cout<<"NO";
+          else 
+             { cout<<"YES"<<"\n";
+               test1= s.size()==n || s1.size()==m;
+                if(test1)
+                    a=0;
+                    else a=1;
+                 for(int i=0;i<n;i++)
+                   for(int j=0;j<m;j++)
+                       {
+                           B[i][j]=a;
+                          
+                       }
+            if(!test1)
+             {for (set<int>::iterator it=s.begin(); it!=s.end(); ++it)
+                     for(int j=0;j<m;j++)
+                         B[*it][j]=0;
+            for (set<int>::iterator it1=s1.begin(); it1!=s1.end(); ++it1)
+              for(int i=0;i<n;i++)
+                    B[i][*it1]=0;}
+                    for(int i=0;i<n;i++)
+                       {cout<<endl; 
+                       { for(int j=0;j<m;j++)
+                            cout<<B[i][j]<<" ";
+                       }
+                       }
+                    
+            
+              
+                     
+                      
+   
+ 
+        
+ 
+             }
+ 
+    return 0;
+}
